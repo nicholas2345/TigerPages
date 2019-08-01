@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>TigerPages</title>
+    <link rel="icon" href="/svg/logo.svg">
+
+    <!-- Bootstrap core CSS -->
+    <link type="text/css" href="/css/bootstraptest.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link type="text/css" href="/css/blog-home.css" rel="stylesheet">
+
+    <!-- Side bar CSS -->
+    <link type="text/css" href="/css/simple-sidebar.css" rel="stylesheet">
+
+  </head>
+
+  <body onload = "windowFunction()">
+  <!-- <body> -->
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <img src="/svg/logo.svg">
+        <a class="navbar-brand" href="/home/">TigerPages</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/home/">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/explore/">Explore</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href= "/profile/">Profile</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href= "/logout/">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+      <div class="row">
+
+        <!-- Blog Entries Column -->
+        <div id = "postings" class="offset-1 col-md-10 mt-4">
+          {{range $post := .Postings}}
+          <!-- Blog Post -->
+          <div class="card mb-4">
+              <span>
+                <h1 class = "d-inline-block ml-1"> <a class = "our-link our-text-primary" href = "/club/{{index $post 6}}"> {{index $post 5}} </a> </h1>
+                <a class = "our-link" href = "/home/{{index $post 7}}">
+                  <p class = "float-right mt-3 mr-1"> Posted on {{index $post 3}} </p>
+                </a>
+              </span>
+              {{if (eq (index $post 8) "true")}}
+                  <img style="width: 50%; height: auto" src="https://s3.us-east-2.amazonaws.com/tigerpages/clubs/{{index $post 6}}/posts/{{index $post 7}}" alt="Card image cap">
+              {{end}}
+              <a class = "our-link" href = "/home/{{index $post 7}}">
+                <div class="card-body">
+                  <h2 class="card-title">{{index $post 0}}</h2>
+                  <hr class = "our-hr-left">
+                  <p class="card-text-center">{{index $post 1}}</p>
+                </div>
+              </a>
+          </div>
+
+          {{end}}
+        </div>
+      </div>
+      <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; TigerPages 2019</p>
+        <p class="m-0 text-center text-white"><a href="/about/">About</a></p>
+        <p class="m-0 text-center text-white"><a href="/createclub/">Create A Club</a></p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="/jquery/jquery.min.js"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <!-- From sidebar code -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+
+
+      // From search.tpl
+      function createAjaxRequest()  // From Nixon book
+        {
+          let req;
+
+          try  // Some browser other than Internet Explorer
+          {
+            req = new XMLHttpRequest();
+          }
+          catch (e1)
+          {
+            try  // Internet Explorer 6+
+             {
+                req = new ActiveXObject("Msxml2.XMLHTTP");
+              }
+            catch (e2)
+              {
+                try  // Internet Explorer 5
+                  {
+                    req = new ActiveXObject("Microsoft.XMLHTTP");
+                  }
+                  catch (e3)
+                  {
+                     req = false;
+                  }
+               }
+            }
+            return req;
+         }
+
+         function processReadyStateChange()
+         {
+            const STATE_UNINITIALIZED = 0;
+            const STATE_LOADING       = 1;
+            const STATE_LOADED        = 2;
+            const STATE_INTERACTIVE   = 3;
+            const STATE_COMPLETED     = 4;
+
+            if (this.readyState != STATE_COMPLETED)
+               return;
+
+            if (this.status != 200)  // Request succeeded?
+            {
+               //alert("AJAX error: Request failed: " + this.statusText);
+               return;
+            }
+
+            if (this.responseText == null)  // Data received?
+            {
+               alert("AJAX error: No data received");
+               return;
+            }
+            let json = JSON.parse(this.responseText);
+            console.log(json.postings)
+            try {
+              for (newCard = 0; newCard < json.postings.length; newCard++) {
+                x = json.postings[newCard];
+                console.log(x)
+                let div = document.createElement("DIV");
+                let newText = `<div class="card mb-4">
+                <span>
+                  <h1 class = "d-inline-block ml-1"> <a class = "our-link our-text-primary" href = "/club/${x[6]}"> ${x[5]}</a> </h1>
+                  <a class = "our-link" href = "/home/${x[7]}">
+                    <p class = "float-right mt-3 mr-1"> Posted on ${x[3]} </p>
+                  </a>
+                </span>`;
+
+                if (x[8] == "true") {
+                    newText = newText + `<img style="width: 50%; height: auto" src="https://s3.us-east-2.amazonaws.com/tigerpages/clubs/${x[6]}/posts/${x[7]}" alt="Card image cap">`
+                  }
+                newText = newText + `<a class = "our-link" href = "/home/${x[7]}">
+                  <div class="card-body">
+                    <h2 class="card-title">${x[0]}</h2>
+                    <hr class = "our-hr-left">
+                    <p class="card-text-center">${x[1]}</p>
+                  </div>
+                </a>
+            </div>`;
+              div.innerHTML = newText;
+              document.getElementById('postings').appendChild(div);
+              }
+          }
+          catch {
+          }
+
+         }
+         let request = null;
+
+         function getResults()
+         {
+            console.log("in getResults")
+            let index = document.getElementById('postings').childElementCount;
+            console.log(index)
+            let messageId = Math.floor(Math.random(1000000) + 1);
+            let url = "/home/";
+            if (request != null)
+               request.abort();
+            request = createAjaxRequest();
+            if (request == null) return;
+            request.onreadystatechange = processReadyStateChange;
+            request.open("POST", url, true);
+            request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            let sendString = "index=" + index + "&messageId=" + messageId;
+            request.send(sendString);
+         }
+
+         function scrollFunction() {
+           console.log("in scrollFunction");
+           let index = document.getElementById('postings').lastElementChild;
+           let x = index.getBoundingClientRect();
+           if (window.innerHeight > x.bottom) {
+             getResults();
+           }
+         }
+
+         function windowFunction() {
+          console.log("windowFunction")
+          window.addEventListener("scroll", function(){scrollFunction()});
+         }
+
+    </script>
+
+  </body>
+
+</html>

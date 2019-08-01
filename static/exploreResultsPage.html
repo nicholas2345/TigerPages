@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Explore Results</title>
+    <link rel="icon" href="/svg/logo.svg">
+    <!-- Bootstrap core CSS -->
+    <link type="text/css" href="/css/bootstraptest.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link type="text/css" href="/css/round-about.css" rel="stylesheet">
+
+    <!-- Side bar CSS -->
+    <link type="text/css" href="/css/simple-sidebar.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <img src="/svg/logo.svg">
+        <a class="navbar-brand" href="/home/">TigerPages</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/home/">Home</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/explore/">Explore</a>
+              <span class="sr-only">(current)</span>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href= "/profile/">Profile</a>
+            </li>
+              <li class="nav-item">
+                  <a class="nav-link" href= "/logout/">Logout</a>
+              </li>
+              <!-- {{/*<li class="nav-item">*/}}
+            {{/*<a class="nav-link" href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Settings</a>*/}}
+            {{/*</li>*/}} -->
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+      <!-- Introduction Row -->
+<!--         <div class = "col-lg-11">
+            <h1 class="my-4" align="Right">Results</h1>
+        </div> -->
+      <!-- Team Members Row -->
+         <div class="row mt-4">
+          <div class = "offset-1 col-lg-6">
+            <h1 class="our-header-my-4"> Search Results</h1>
+          </div>
+      </div>
+        {{$switch := true}}
+        {{range $club := .Data}}
+        {{if $switch }}
+        <a class= "our-link" href="/club/{{index $club 3}}">
+        <div class="row">
+          <!-- <div class="col-lg-12">
+            <h2 class="my-4">{{index $club 0}}</h2>
+          </div> -->
+          <div class="offset-1 col-lg-10 our-container">
+              <img class="rounded-circle img-fluid float-left mx-auto" width="200" height="200" src="https://s3.us-east-2.amazonaws.com/tigerpages/clubs/{{index $club 3}}/picture" alt="">
+            <div class = "offset-5 col-lg-7">
+                <h2 class = "text-right our-text-primary">{{index $club 1}} </h2>
+                <hr class = "our-hr-right">
+                <p class = "text-right">{{index $club 2}}</p>
+            </div>
+          </div>
+        </div>
+        </a>
+        {{$switch = false}}
+        {{else}}
+         <a class= "our-link" href="/club/{{index $club 3}}">
+         <div class="row">
+          <!-- <div class="col-lg-12">
+            <h2 class="my-4">{{index $club 0}}</h2>
+          </div> -->
+          <div class="offset-1 col-lg-10 our-container-dark">
+            <img class="rounded-circle img-fluid float-left mx-auto" width="200" height="200" src="https://s3.us-east-2.amazonaws.com/tigerpages/clubs/{{index $club 3}}/picture" alt="">
+            <div class = "offset-5 col-lg-7">
+                <h2 class = "text-right our-text-primary">{{index $club 1}} </h2>
+                <hr class = "our-hr-right">
+                <p class = "text-right">{{index $club 2}}</p>
+            </div>
+          </div>
+        </div>
+      </a>
+        {{$switch = true}}
+        {{end}}
+        {{end}}
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark mt-3">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; TigerPages 2019</p>
+        <p class="m-0 text-center text-white"><a href="/about/">About</a></p>
+        <p class="m-0 text-center text-white"><a href="/createclub/">Create A Club</a></p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="/jquery/jquery.min.js"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+
+    <!-- From sidebar code -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+    <!-- End of sidebar code -->
+  </body>
+
+</html>

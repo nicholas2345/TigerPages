@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Club Pages</title>
+    <link rel="icon" href="/svg/logo.svg">
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstraptest.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link type="text/css" href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet">
+    <link type="text/css" href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet">
+    <link type="text/css" href="/css/all.min.css" rel="stylesheet">
+    <link type="text/css" href="/css/fontawesome.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/resume.min.css" rel="stylesheet">
+</head>
+
+<body id="page-top">
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="sideNav">
+    <a class="navbar-brand js-scroll-trigger" href="#page-top">
+        <span class="d-block d-lg-none">{{.Name}}</span>
+        <span class="d-none d-lg-block">
+          <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="https://s3.us-east-2.amazonaws.com/tigerpages/clubs/{{.ClubID}}/picture" alt="">
+        </span>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href="#members">Members</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href="#posts">Posts</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <img src="/svg/logo.svg">
+        <a class="navbar-brand" href="/home/">TigerPages</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/home/">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/explore/">Explore</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/profile/">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href= "/logout/">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid p-0">
+    <section class="resume-section p-3 p-lg-5 d-flex d-column" id="about">
+        <div class="my-auto">
+            <h1 class="mb-0">
+                <span class="text-primary">{{.Name}}</span>
+            </h1>
+            <!-- Links -->
+            <div class="subheading mb-5">
+              {{if (eq (index .Links "website") "")}}
+              {{else}}
+              <a target="_blank" href="https://{{index .Links "website"}}">
+                {{index .Links "website"}}
+              </a>
+              {{end}}
+
+              {{if (eq (index .Links "email") "")}}
+              {{else}}
+               |
+              <a href="mailto:{{index .Links "email"}}">
+                {{index .Links "email"}}
+              </a>
+              {{end}}
+            </div>
+
+            <div class="social-icons">
+              {{if (eq (index .Links "facebook") "")}}
+              {{else}}
+              <a target="_blank" href="https://{{index .Links "facebook"}}" >
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              {{end}}
+
+              {{if (eq (index .Links "instagram") "")}}
+              {{else}}
+              <a target="_blank" href="https://{{index .Links "instagram"}}">
+                <i class="fab fa-instagram"></i>
+              </a>
+              {{end}}
+
+              {{if (eq (index .Links "twitter") "")}}
+              {{else}}
+              <a target="_blank" href="https://{{index .Links "twitter"}}">
+                <i class="fab fa-twitter"></i>
+              </a>
+              {{end}}
+
+              {{if (eq (index .Links "youtube") "")}}
+              {{else}}
+              <a target="_blank" href="https://{{index .Links "youtube"}}">
+                <i class="fab fa-youtube"></i>
+              </a>
+              {{end}}
+
+              {{if (eq (index .Links "applemusic") "")}}
+              {{else}}
+              <a target="_blank" href="https://{{index .Links "applemusic"}}">
+                <i class="fab fa-itunes-note"></i>
+              </a>
+              {{end}}
+
+              {{if (eq (index .Links "spotify") "")}}
+              {{else}}
+              <a target="_blank" href="https://{{index .Links "spotify"}}">
+                <i class="fab fa-spotify"></i>
+              </a>
+              {{end}}
+            </div>
+          </br>
+            <!-- Admin Buttons and Create Post Buttons-->
+            <div class="clearfix">
+                <span>
+                            <button class="btn btn-outline-primary mb-2 ml-0 mr-2" id="reqAdmButton"><i class="fa fa-check"></i> Admin</button>
+                            <button class="btn btn-outline-primary mb-2 ml-0 mr-2" data-toggle="modal" data-target="#createPost"><i class="fa fa-plus"></i> Create Post</button>
+                            <button class="btn btn-outline-primary mb-2 ml-0" data-toggle="modal" data-target="#editInfo">Edit Info</button>
+                            <button class="btn btn-outline-primary mb-2 ml-0" data-toggle="modal" data-target="#memReq">View Member Requests</button>
+                            <button class="btn btn-outline-primary mb-2 ml-0" data-toggle="modal" data-target="#adReq">View Admin Requests</button>
+                </span>
+            </div>
+            <div>
+                <h3>Bio</h3>
+                <p class="lead mb-5">{{.Bio}}</p>
+            </div>
+            <div>
+                <h3>Categories</h3>
+                <ul>
+                {{range $category := .Categories}}
+                    <li>
+                    {{$category}}
+                    </li>
+                {{end}}
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <hr class="m-0">
+
+    <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="members">
+        <div class="my-auto">
+            <h2 class="mb-5">Members</h2>
+            <ul>
+            {{range $m := .Members}}
+                <li ><a href="/person/{{index $m 1}}">{{index $m 0}}</a></li>
+            {{end}}
+            </ul>
+        </div>
+    </section>
+
+    <hr class="m-0">
+
+    <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="posts">
+        <div class="my-auto">
+            <h2 class="mb-5">Posts</h2>
+        {{range $post := .Postings}}
+
+            <div class="resume-item d-flex flex-column flex-md-row mb-5">
+                <div class="resume-content mr-auto">
+                {{if (eq (index $post 6) "true")}}
+                    <img style="width: 50%; height: auto" src="https://s3.us-east-2.amazonaws.com/tigerpages/clubs/{{$.ClubID}}/posts/{{index $post 5}}" alt="Card image cap">
+                {{end}}
+                    <h3 class="mb-0">{{index $post 0}}</h3>
+                    <div class="resume-date">
+                    {{if (eq (index $post 4) "true")}}
+                        <span class="text-primary">Member Post</span>
+                    {{else}}
+                        <span class="text-primary">Follower Post</span>
+                    {{end}}
+                    </div>
+                    <div class="subheading mb-3">Posted on {{index $post 3}}</div>
+                    <p>{{index $post 2}}</p>
+                </div>
+                <div class="resume-date text-md-right">
+                    <button class="btn btn-outline-dark" data-toggle="modal" data-target="#editPost{{index $post 5}}">Edit</button>
+                    <button class="btn btn-outline-dark" data-toggle="modal" data-target="#deletePost{{index $post 5}}">Delete Post</button>
+                </div>
+            </div>
+
+        {{end}}
+        </div>
+
+    </section>
+
+    <!-- Modal for Viewing member requests -->
+    <div class="modal fade" id="memReq" tabindex="-1" role="dialog" aria-labelledby="memReqLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="our-modal-header">
+                    <h5 class="our-modal-title" id="memReqLabel">Confirm or Deny Membership Requests</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="/club/{{.ClubID}}/admin/" method="post" id="memReqForm" enctype="multipart/form-data">
+                      <div class="form-group">
+                          <input type="hidden" class="form-control" name="action" value="memberRequests">
+                      </div>
+                      <div class="form-group">
+                          <input type="hidden" class="form-control" name="club_id" value="{{.ClubID}}">
+                      </div>
+                      {{range $netID := .MemberRequests}}
+                        <div class="form-group">
+                            <label class="col-form-label">{{$netID}}:</label>
+                            <!-- Default inline 1-->
+                            <div class="custom-control custom-radio custom-control-inline">
+                              <input type="radio" class="custom-control-input" name="{{$netID}}" id="{{$netID}}confirm" value="confirm">
+                              <label class="custom-control-label" for="{{$netID}}confirm">Confirm</label>
+                            </div>
+
+                            <!-- Default inline 2-->
+                            <div class="custom-control custom-radio custom-control-inline">
+                              <input type="radio" class="custom-control-input" name="{{$netID}}" id="{{$netID}}deny" value="deny">
+                              <label class="custom-control-label" for="{{$netID}}deny">Deny</label>
+                            </div>
+
+                            <!-- Default inline 3-->
+                            <div class="custom-control custom-radio custom-control-inline">
+                              <input type="radio" class="custom-control-input" name="{{$netID}}" id="{{$netID}}later" value="later" checked>
+                              <label class="custom-control-label" for="{{$netID}}later">Decide Later</label>
+                            </div>
+                        </div>
+                      {{end}}
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="submitButton" onclick="send_mem_req()">Confirm Selections</button>
+                </div>
+                <script>
+                    function send_mem_req() {
+                        document.getElementById("memReqForm").submit();
+                    }
+                </script>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Viewing admin requests -->
+    <div class="modal fade" id="adReq" tabindex="-1" role="dialog" aria-labelledby="adReqLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="our-modal-header">
+                    <h5 class="our-modal-title" id="adReqLabel">Confirm or Deny Admin Requests</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="/club/{{.ClubID}}/admin/" method="post" id="adReqForm" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <input type="hidden" class="form-control" name="action" value="adminRequests">
+                        </div>
+                        <div class="form-group">
+                            <input type="hidden" class="form-control" name="club_id" value="{{.ClubID}}">
+                        </div>
+                      {{range $netID := .AdminRequests}}
+                        <div class="form-group">
+                            <label class="col-form-label">{{$netID}}:</label>
+                            <!-- Default inline 1-->
+                            <div class="custom-control custom-radio custom-control-inline">
+                              <input type="radio" class="custom-control-input" name="{{$netID}}" id="{{$netID}}confirm" value="confirm">
+                              <label class="custom-control-label" for="{{$netID}}confirm">Confirm</label>
+                            </div>
+
+                            <!-- Default inline 2-->
+                            <div class="custom-control custom-radio custom-control-inline">
+                              <input type="radio" class="custom-control-input" name="{{$netID}}" id="{{$netID}}deny" value="deny">
+                              <label class="custom-control-label" for="{{$netID}}deny">Deny</label>
+                            </div>
+
+                            <!-- Default inline 3-->
+                            <div class="custom-control custom-radio custom-control-inline">
+                              <input type="radio" class="custom-control-input" name="{{$netID}}" id="{{$netID}}later" value="later" checked>
+                              <label class="custom-control-label" for="{{$netID}}later">Decide Later</label>
+                            </div>
+                        </div>
+                      {{end}}
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="submitButton" onclick="send_ad_req()">Confirm Selections</button>
+                </div>
+                <script>
+                    function send_ad_req() {
+                        document.getElementById("adReqForm").submit();
+                    }
+                </script>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Edit Info Modal -->
+    <div class="modal fade" id="editInfo" tabindex="-1" role="dialog" aria-labelledby="editInfoLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="our-modal-header">
+                    <h5 class="our-modal-title" id="editInfoLabel">Edit Profile</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="/club/{{.ClubID}}/admin/" method="post" id="infoForm" enctype='multipart/form-data'>
+                        <div class="form-group">
+                            <img class="img-fluid img-profile mx-auto mb-2" id="clubpic" src="https://s3.us-east-2.amazonaws.com/tigerpages/clubs/{{.ClubID}}/picture" alt="">
+                            <label class="col-form-label">Profile Picture:</label>
+                            <!-- On click, change the src of the image. Adapted from https://stackoverflow.com/questions/18457340/how-to-preview-selected-image-in-input-type-file-in-popup-using-jquery-->
+                            <input id="clubpicinput" onchange="swap_image('clubpicinput','clubpic')" name="pic" multiple="" type="file" accept="image/*"/>
+                        </div>
+                        <div class="form-group">
+                            <input type="hidden" class="form-control" name="action" value="editInfo">
+                        </div>
+                        <div class="form-group">
+                            <input type="hidden" class="form-control" name="club_id" value="{{.ClubID}}">
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Name:</label>
+                            <input type="text" class="form-control" name="name" value="{{.Name}}">
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Bio:</label>
+                            <input type="text" class="form-control" name="bio" value="{{.Bio}}">
+                        </div>
+                        <!-- Links -->
+                        <p>Add links to external websites to your club's page. Icons for fields left blank will not appear on your page.
+                        Please do not include "https://" or "http://" in your links. </p>
+                        <div class="form-group">
+                            <label class="col-form-label">Facebook Link:</label>
+                            <input type="text" class="form-control" name="facebook" value="{{index .Links "facebook"}}">
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Instagram Link:</label>
+                            <input type="text" class="form-control" name="instagram" value="{{index .Links "instagram"}}">
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Twitter Link:</label>
+                            <input type="text" class="form-control" name="twitter" value="{{index .Links "twitter"}}">
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Youtube Link:</label>
+                            <input type="text" class="form-control" name="youtube" value="{{index .Links "youtube"}}">
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Apple Music Link:</label>
+                            <input type="text" class="form-control" name="applemusic" value="{{index .Links "applemusic"}}">
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Spotify Link:</label>
+                            <input type="text" class="form-control" name="spotify" value="{{index .Links "spotify"}}">
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Email:</label>
+                            <input type="text" class="form-control" name="email" value="{{index .Links "email"}}">
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">External Website Link:</label>
+                            <input type="text" class="form-control" name="website" value="{{index .Links "website"}}">
+                        </div>
+                    </form>
+                    <!--label>Bio</label-->
+                    <!--input type="text" name="editBioText"-->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="submitButton" onclick="save_info()">Save Changes</button>
+                </div>
+                <script>
+                    function save_info() {
+                        document.getElementById("infoForm").submit();
+                    }
+                </script>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Post Modal -->
+{{range $post := .Postings}}
+    <div class="modal fade" id="deletePost{{index $post 5}}" tabindex="-1" role="dialog" aria-labelledby="deletePostLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="our-modal-header">
+                    <h5 class="our-modal-title" id="deletePostLabel">Delete Post?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p> Are you sure you want to delete this post? This action cannot be undone. </p>
+                    <form action="/club/{{$.ClubID}}/admin/" method="post" id="deleteForm{{index $post 5}}">
+                        <div class="form-group">
+                            <input type="hidden" class="form-control" name="action" value="deletepost">
+                        </div>
+                        <div class="form-group">
+                            <input type="hidden" class="form-control" name="posting_id" value="{{index $post 5}}">
+                        </div>
+                        <div class="form-group">
+                            <input type="hidden" class="form-control" name="club_id" value="{{$.ClubID}}">
+                        </div>
+                        <!-- Value is dependent on whether or not post has an image -->
+                        <div class="form-group">
+                            <input type="hidden" class="form-control" name="has_image" value="{{index $post 6}}">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                    <button type="button" class="btn btn-primary" onclick="delete_post({{index $post 5}})">Yes</button>
+                </div>
+            </div>
+        </div>
+        <script>
+            function delete_post(posting_id) {
+                document.getElementById("deleteForm" + posting_id).submit();
+            }
+        </script>
+    </div>
+
+    <!-- Edit Post Modal -->
+    <div class="modal fade" id="editPost{{index $post 5}}" tabindex="-1" role="dialog" aria-labelledby="editPostLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="our-modal-header">
+                    <h5 class="our-modal-title" id="editPostLabel">Edit Content</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="/club/{{$.ClubID}}/admin/" method="post" id="infoForm{{index $post 5}}" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <img class="img-fluid img-profile mx-auto mb-2" id="pic{{index $post 5}}" src="https://s3.us-east-2.amazonaws.com/tigerpages/clubs/{{$.ClubID}}/posts/{{index $post 5}}" alt="">
+                            <label class="col-form-label">Add a Picture:</label>
+                            <!-- On click, change the src of the image. Adapted from https://stackoverflow.com/questions/18457340/how-to-preview-selected-image-in-input-type-file-in-popup-using-jquery-->
+                            <input id="picinput{{index $post 5}}" onchange="add_photo('picinput{{index $post 5}}','pic{{index $post 5}}', 'hasphoto{{index $post 5}}')" name="pic" multiple="" type="file" accept="image/*"/>
+                            <button type="button" onclick="delete_photo('picinput{{index $post 5}}', 'pic{{index $post 5}}', 'hasphoto{{index $post 5}}', '')">Remove Photo</button>
+                        </div>
+                        <div class="form-group">
+                            <input type="hidden" class="form-control" id="hasphoto{{index $post 5}}" name="has_image" value="{{index $post 6}}">
+                        </div>
+                        <div class="form-group">
+                            <input type="hidden" class="form-control" name="action" value="editpost">
+                        </div>
+                        <div class="form-group">
+                            <input type="hidden" class="form-control" name="posting_id" value="{{index $post 5}}">
+                        </div>
+                        <div class="form-group">
+                            <input type="hidden" class="form-control" name="club_id" value="{{$.ClubID}}">
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Title:</label>
+                            <input type="text" class="form-control" name="title" value="{{index $post 0}}">
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Member Post:</label><br>
+                        {{if (eq (index $post 4) "true")}}
+                            <input type="radio" name="member_post" value="true" checked> Yes<br>
+                            <input type="radio" name="member_post" value="false"> No<br>
+                        {{else}}
+                            <input type="radio" name="member_post" value="true"> Yes<br>
+                            <input type="radio" name="member_post" value="false" checked> No<br>
+                        {{end}}
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Blurb:</label>
+                            <input type="text" class="form-control" name="blurb" value="{{index $post 1}}">
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Long Blurb:</label>
+                            <input type="text" class="form-control" name="long_blurb" value="{{index $post 2}}">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="edit_post({{index $post 5}})">Save changes</button>
+                </div>
+                <script>
+                    function edit_post(posting_id) {
+                        document.getElementById("infoForm" + posting_id).submit();
+                    }
+                </script>
+            </div>
+        </div>
+    </div>
+{{end}}
+
+    <!-- Create Post Modal -->
+    <div class="modal fade" id="createPost" tabindex="-1" role="dialog" aria-labelledby="createPostLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="our-modal-header">
+                    <h5 class="our-modal-title" id="createPostLabel">Create Post</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="/club/{{.ClubID}}/admin/" method="post" id="createPostForm" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <img class="img-fluid img-profile mx-auto mb-2" id="newpostpic" src="" alt="">
+                            <label class="col-form-label">Add a Picture:</label>
+                            <!-- On click, change the src of the image. Adapted from https://stackoverflow.com/questions/18457340/how-to-preview-selected-image-in-input-type-file-in-popup-using-jquery-->
+                            <input id="newpostpicinput" onchange="add_photo('newpostpicinput','newpostpic', 'new_post_has_photo')" name="pic" multiple="" type="file" accept="image/*"/>
+                            <button type="button" onclick="delete_photo('newpostpicinput','newpostpic','new_post_has_photo', '')">Remove Photo</button>
+                        </div>
+                        <div class="form-group">
+                            <input type="hidden" class="form-control" id="new_post_has_photo" name="has_image" value="false">
+                        </div>
+                        <div class="form-group">
+                            <input type="hidden" class="form-control" name="action" value="createpost">
+                        </div>
+                        <div class="form-group">
+                            <input type="hidden" class="form-control" name="club_id" value="{{.ClubID}}">
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Title:</label>
+                            <input type="text" class="form-control" name="title">
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Member Post:</label><br>
+                            <input type="radio" name="member_post" value="true"> Yes<br>
+                            <input type="radio" name="member_post" value="false" checked> No<br>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Blurb:</label>
+                            <input type="text" class="form-control" name="blurb">
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Long Blurb:</label>
+                            <input type="text" class="form-control" name="long_blurb">
+                        </div>
+                    </form>
+                    <!--label>Bio</label-->
+                    <!--input type="text" name="editBioText"-->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="submitButton" onclick="createPost()">Create Post</button>
+                </div>
+                <script>
+                    // function showCreatePost() {
+                    //     $('[id*="createPost"]').modal('show');
+                    // }
+                    function createPost() {
+                        document.getElementById("createPostForm").submit();
+                    }
+                </script>
+            </div>
+        </div>
+    </div>
+
+
+    <hr class="m-0">
+</div>
+
+<!-- Footer -->
+<footer class="py-5 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; TigerPages 2019</p>
+        <p class="m-0 text-center text-white"><a href="/about/">About</a></p>
+        <p class="m-0 text-center text-white"><a href="/createclub/">Create A Club</a></p>
+    </div>
+    <!-- /.container -->
+</footer>
+
+<!-- Modal tools  -->
+<script src="/js/modalTools.js"></script>
+
+<!-- Bootstrap core JavaScript -->
+<script src="/jquery/jquery.min.js"></script>
+<script src="/js/bootstrap.bundle.min.js"></script>
+
+<!-- Plugin JavaScript -->
+<script src="/jquery/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for this template -->
+<script src="/js/resume.min.js"></script>
+
+</body>
+
+</html>

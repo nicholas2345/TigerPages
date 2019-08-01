@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Club Pages</title>
+    <link rel="icon" href="/svg/logo.svg">
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstraptest.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link type="text/css" href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet">
+    <link type="text/css" href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet">
+    <link type="text/css" href="/css/all.min.css" rel="stylesheet">
+    <link type="text/css" href="/css/fontawesome.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/resume.min.css" rel="stylesheet">
+
+    <script type="text/javascript">
+      function changeRole(action) {
+        // set action to action
+        document.getElementById("buttonFormAction").value = action
+        // submit buttonForm
+        document.getElementById("buttonForm").submit
+      }
+    </script>
+
+  </head>
+
+  <body id="page-top">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="sideNav">
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">
+        <span class="d-block d-lg-none">{{.Name}}</span>
+        <span class="d-none d-lg-block">
+          <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="https://s3.us-east-2.amazonaws.com/tigerpages/clubs/{{.ClubID}}/picture" alt="">
+        </span>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#members">Members</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#posts">Posts</a>
+          </li>
+         <!-- <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#awards">Awards</a>
+          </li> -->
+        </ul>
+      </div>
+    </nav>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <img src="/svg/logo.svg">
+        <a class="navbar-brand" href="/home/">TigerPages</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/home/">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/explore/">Explore</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/profile/">Profile</a>
+            </li>
+              <li class="nav-item">
+                  <a class="nav-link" href= "/logout/">Logout</a>
+              </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid p-0">
+      <section class="resume-section  p-3 p-lg-5 d-flex d-column" id="about">
+        <div class="my-auto">
+            <br>
+          <h1 class="mb-0">
+            <span class="text-primary">{{.Name}}</span>
+          </h1>
+          <!-- Links -->
+          <div class="subheading mb-5">
+            {{if (eq (index .Links "website") "")}}
+            {{else}}
+            <a target="_blank" href="https://{{index .Links "website"}}">
+              {{index .Links "website"}}
+            </a>
+            {{end}}
+
+            {{if (eq (index .Links "email") "")}}
+            {{else}}
+             |
+            <a href="mailto:{{index .Links "email"}}">
+              {{index .Links "email"}}
+            </a>
+            {{end}}
+          </div>
+
+          <div class="social-icons">
+            {{if (eq (index .Links "facebook") "")}}
+            {{else}}
+            <a target="_blank" href="https://{{index .Links "facebook"}}" >
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            {{end}}
+
+            {{if (eq (index .Links "instagram") "")}}
+            {{else}}
+            <a target="_blank" href="https://{{index .Links "instagram"}}">
+              <i class="fab fa-instagram"></i>
+            </a>
+            {{end}}
+
+            {{if (eq (index .Links "twitter") "")}}
+            {{else}}
+            <a target="_blank" href="https://{{index .Links "twitter"}}">
+              <i class="fab fa-twitter"></i>
+            </a>
+            {{end}}
+
+            {{if (eq (index .Links "youtube") "")}}
+            {{else}}
+            <a target="_blank" href="https://{{index .Links "youtube"}}">
+              <i class="fab fa-youtube"></i>
+            </a>
+            {{end}}
+
+            {{if (eq (index .Links "applemusic") "")}}
+            {{else}}
+            <a target="_blank" href="https://{{index .Links "applemusic"}}">
+              <i class="fab fa-itunes-note"></i>
+            </a>
+            {{end}}
+
+            {{if (eq (index .Links "spotify") "")}}
+            {{else}}
+            <a target="_blank" href="https://{{index .Links "spotify"}}">
+              <i class="fab fa-spotify"></i>
+            </a>
+            {{end}}
+          </div>
+        </br>
+          <!-- Follow, Request Member/Admin Buttons -->
+          <div class="clearfix">
+              <form class="form-row float-left" action="/club/{{.ClubID}}" method="post" id="buttonForm">
+                <input type="hidden" id="buttonFormAction" name="action" value="">
+                <div class="col-auto">
+                    {{if .IsFollower}}
+                      <button class="btn btn-outline-primary mb-2" id="followButton" onclick="changeRole('unfollow')"><i class="fa fa-check"></i> Following</button>
+                    {{else}}
+                      <button class="btn btn-outline-primary mb-2" id="followButton" onclick="changeRole('follow')"><i class="fa fa-plus"></i> Follow</button>
+                    {{end}}
+                    </div>
+                <!-- Values for these buttons dependent on values of isMember and Req -->
+                    {{if .IsMember}}
+                          <div class="col-auto">
+                            <button class="btn btn-outline-primary mb-2" id="reqMemButton" onclick="changeRole('leavemember')"><i class="fa fa-check"></i> Member</button>
+                          </div>
+                          <div class="col-auto">
+                            {{if (eq .ReqType "admin")}}
+                              <button class="btn btn-outline-primary mb-2" id="reqMemButton"></i>Admin Request Sent</button>
+                            {{else}}
+                              <button class="btn btn-outline-primary mb-2" id="reqAdmButton" onclick="changeRole('reqadmin')"><i class="fa fa-plus"></i> Request Admin</button>
+                            {{end}}
+                          </div>
+                    {{else}}
+                          <div class="col-auto">
+                            {{if (eq .ReqType "member")}}
+                              <button class="btn btn-outline-primary mb-2" id="reqMemButton"></i>Member Request Sent</button>
+                            {{else}}
+                              <button class="btn btn-outline-primary mb-2" id="reqMemButton" onclick="changeRole('reqmember')"><i class="fa fa-plus" ></i> Request Member</button>
+                            {{end}}
+                          </div>
+                    {{end}}
+              </form>
+          </div>
+            <div>
+              <div class="card">
+                <div class="card-header">
+                 <h2 class="d-inline-block">Bio</h2>
+                </div>
+                <div class="card-body">
+                  {{.Bio}}
+                </div>
+              </div>
+            </div>
+            <div>
+              <h3>Categories</h3>
+              <ul>
+                {{range $category := .Categories}}
+                    <li>
+                      {{$category}}
+                    </li>
+                {{end}}
+              </ul>
+          </div>
+
+        </div>
+      </section>
+
+      <hr class="m-0">
+
+      <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="members">
+              <div class="my-auto">
+                <h2 class="mb-5">Members</h2>
+                  <ul>
+                    {{range $m := .Members}}
+                    <li ><a href="/person/{{index $m 1}}">{{index $m 0}}</a></li>
+                    {{end}}
+                  </ul>
+              </div>
+            </section>
+
+      <hr class="m-0">
+
+        <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="posts">
+            <div class="my-auto">
+                <h2 class="mb-5">Posts</h2>
+            {{range $post := .Postings}}
+
+                <div class="resume-item d-flex flex-column flex-md-row mb-5">
+                    <div class="resume-content mr-auto">
+                      {{if (eq (index $post 6) "true")}}
+                          <img style="width: 50%; height: auto" src="https://s3.us-east-2.amazonaws.com/tigerpages/clubs/{{$.ClubID}}/posts/{{index $post 5}}" alt="Card image cap">
+                      {{end}}
+                        <h3 class="mb-0">{{index $post 0}}</h3>
+                        <div class="resume-date">
+                        {{if (eq (index $post 4) "true")}}
+                            <span class="text-primary">Member Post</span>
+                        {{else}}
+                            <span class="text-primary">Follower Post</span>
+                        {{end}}
+                        </div>
+                        <div class="subheading mb-3">Posted on {{index $post 3}}</div>
+                        <p>{{index $post 2}}</p>
+                    </div>
+                </div>
+            {{end}}
+
+            </div>
+
+        </section>
+
+    <hr class="m-0">
+  </div>
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; TigerPages 2019</p>
+        <p class="m-0 text-center text-white"><a href="/about/">About</a></p>
+        <p class="m-0 text-center text-white"><a href="/createclub/">Create A Club</a></p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="/jquery/jquery.min.js"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="/jquery/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="/js/resume.min.js"></script>
+
+  </body>
+
+</html>

@@ -1,0 +1,153 @@
+// Create test maps
+	//test1 := map[string]string{
+	//	"club_id": "1",
+	//	"name": "Fencing",
+	//	"bio": "We like fences",
+	//	"show_members": "True"}
+	//upsert("clubs", db, test1)
+
+	//test2 := map[string]string{
+	//	"club_id": "2",
+	//	"link_type": "Facebook",
+	//	"descriptor": "facebook.com"}
+	//upsert("links", db, test2)
+	//
+	//test3 := map[string]string{
+	//	"club_id": "2",
+	//	"link_type": "Instagram",
+	//	"descriptor": "instagram.com"}
+	//upsert("links", db, test3)
+	//
+	//test4 := map[string]string{
+	//	"net_id": "sdduncan",
+	//	"club_id": "2",
+	//	"club_name": "Water Polo",
+	//	"name": "Sean",
+	//	"member": "true",
+	//	"admin": "true"}
+	//upsert("followers", db, test4)
+	//
+	//test5 := map[string]string{
+	//	"net_id": "john",
+	//	"club_id": "2",
+	//	"club_name": "Water Polo",
+	//	"name": "John",
+	//	"member": "true",
+	//	"admin": "true"}
+	//upsert("followers", db, test5)
+	//
+	//t := pq.FormatTimestamp(time.Now())
+	//timeString := string(t)
+	//test6 := map[string]string{
+	//	"posting_id": "1",
+	//	"club_id": "2",
+	//	"title": "Welcome New Members",
+	//	"member_post": "False",
+	//	"blurb": "Welcome!",
+	//	"long_blurb": "Welcome to the team!",
+	//	"creation_time": timeString}
+	//
+	//upsert("postings", db, test6)
+	//
+	//t = pq.FormatTimestamp(time.Now())
+	//timeString = string(t)
+	//test7 := map[string]string{
+	//	"posting_id": "2",
+	//	"club_id": "2",
+	//	"title": "Game Today",
+	//	"member_post": "False",
+	//	"blurb": "Game today!",
+	//	"long_blurb": "Game vs Harvard at 4 pm today!",
+	//	"creation_time": timeString}
+	//
+	//upsert("postings", db, test7)
+
+	//success, err, clubInfo := getClubInfo(db, "Water Polo")
+	//if !success {
+	//	panic(err)
+	//} else {
+	//	fmt.Println(fmt.Sprintf("Name: %s", clubInfo.name))
+	//	fmt.Println(fmt.Sprintf("Bio: %s", clubInfo.bio))
+	//	fmt.Println()
+	//
+	//	for i := range clubInfo.links {
+	//		fmt.Println(fmt.Sprintf("%s: %s", clubInfo.links[i][0], clubInfo.links[i][1]))
+	//	}
+	//	fmt.Println()
+	//
+	//	for i := range clubInfo.categories {
+	//		fmt.Println(fmt.Sprintf("Category: %s", clubInfo.categories[i]))
+	//	}
+	//	fmt.Println()
+	//
+	//	for i := range clubInfo.members {
+	//		fmt.Println(fmt.Sprintf("Member: %s", clubInfo.members[i]))
+	//	}
+	//	fmt.Println()
+	//	for i := range clubInfo.postings {
+	//		fmt.Println(fmt.Sprintf("%s \ncreated at: %s \n%s \n%s", clubInfo.postings[i][0],
+	//			clubInfo.postings[i][3], clubInfo.postings[i][1], clubInfo.postings[i][2]))
+	//		fmt.Println()
+	//	}
+	//}
+
+	//test1 = map[string]string{
+	//	"club_id": "2",
+	//	"name": "Water Polo",
+	//	"bio": "We like water",
+	//	"show_members": "True"}
+	//upsert("clubs", db, test1)
+	//
+	//test1 = map[string]string{
+	//	"club_id": "3",
+	//	"name": "Wrestling",
+	//	"bio": "We like to wrestle",
+	//	"show_members": "True"}
+	//upsert("clubs", db, test1)
+	//
+	//test1 = map[string]string{
+	//	"club_id": "1",
+	//	"category": "sport"}
+	//upsert("categories", db, test1)
+	//
+	//test1 = map[string]string{
+	//	"club_id": "2",
+	//	"category": "sport"}
+	//upsert("categories", db, test1)
+	//
+	//test1 = map[string]string{
+	//	"club_id": "3",
+	//	"category": "sport"}
+	//upsert("categories", db, test1)
+	//
+	//test1 = map[string]string{
+	//	"club_id": "1",
+	//	"category": "land"}
+	//upsert("categories", db, test1)
+	//
+	//test1 = map[string]string{
+	//	"club_id": "2",
+	//	"category": "water"}
+	//upsert("categories", db, test1)
+	//
+	//test1 = map[string]string{
+	//	"club_id": "3",
+	//	"category": "land"}
+	//upsert("categories", db, test1)
+
+	//categories := []string{"sport"}
+	//_, err, results := getSearchFormResults(db, categories)
+	//if err != nil {fmt.Println(err)}
+	//fmt.Println(results)
+	//fmt.Println()
+	//
+	//categories = []string{"sport", "land"}
+	//_, err, results = getSearchFormResults(db, categories)
+	//if err != nil {fmt.Println(err)}
+	//fmt.Println(results)
+	//fmt.Println()
+	//
+	//categories = []string{"water"}
+	//_, err, results = getSearchFormResults(db, categories)
+	//if err != nil {fmt.Println(err)}
+	//fmt.Println(results)

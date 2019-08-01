@@ -1,0 +1,2 @@
+bottle==0.12.13
+bottle_sslify==0.0.1

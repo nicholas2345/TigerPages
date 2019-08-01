@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>TigerPages</title>
+    <link rel="icon" href="/svg/logo.svg">
+
+    <!-- Bootstrap core CSS -->
+    <link type="text/css" href="/css/bootstraptest.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link type="text/css" href="/css/blog-home.css" rel="stylesheet">
+
+    <!-- Side bar CSS -->
+    <link type="text/css" href="/css/simple-sidebar.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <img src="/svg/logo.svg">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/home/">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/explore/">Explore</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href= "/profile/">Profile</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href= "/logout/">Logout</a>
+            </li>
+              <!-- {{/*<li class="nav-item">*/}}
+            {{/*<a class="nav-link" href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Settings</a>*/}}
+            {{/*</li>*/}} -->
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+      <div class="row">
+
+        <!-- Blog Entries Column -->
+        <div class="offset-1 col-md-10 mt-4">
+          <!-- Blog Post -->
+          <div class="card mb-4">
+              <span>
+                <h1 class = "d-inline-block ml-1"> <a class = "our-link our-text-primary"> Welcome to TigerPages! </a> </h1>
+              </span>
+              <a class = "our-link" href = "/home/{{index $post 7}}">
+                <div class="card-body">
+                  <hr class = "our-hr-left">
+                  <p class="card-text-center">We've detected it's your first time on the site. TigerPages is a tool for Princeton students to
+                  discover and connect with student organizations on campus. To get started, first go to your <a href="/profile/">profile</a>
+                  and input your name, bio and a profile picture. After that, you can search for clubs you're interested in on our explore page. Enjoy!</p>
+                </div>
+              </a>
+          </div>
+
+
+
+        </div>
+      </div>
+      <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; TigerPages 2019</p>
+        <p class="m-0 text-center text-white"><a href="/about/">About</a></p>
+        <p class="m-0 text-center text-white"><a href="/createclub/">Create A Club</a></p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="/jquery/jquery.min.js"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <!-- From sidebar code -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+
+  </body>
+
+</html>
